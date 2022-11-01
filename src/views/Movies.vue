@@ -3,19 +3,22 @@ import {ref, onMounted} from 'vue'
 import MovieCard from '../components/MovieCard.vue'
 
 const movielist = ref([])
+const isLoading = ref(true)
 
-onMounted(() => {
-    fetch('http://localhost:3000/movies')
-    .then((response) => response.json())
-    .then(apiMovies => {
-        movielist.value = apiMovies
-    })
+onMounted(async() => {
+    const result = await fetch('http://localhost:3000/movies');
+    const response = await result.json();
+
+    movielist.value = response;
+    isLoading.value = false;
 })
 </script>
 
 <template>
-    <h1>Movies</h1>
-    <div class="grid grid-cols-3 gap-4">
+    <div class="max-w-sm mx-auto" v-if="isLoading">
+        <span class="text-2xl font-bold text-indigo-700">Please wait ...</span>
+    </div>
+    <div class="grid grid-cols-3 gap-4" v-else>
         <MovieCard v-for="movie in movielist" :key="movie.imdbID" :movie="movie" />
     </div>
 </template>
