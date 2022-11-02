@@ -7,6 +7,7 @@ const isLoading = ref(true)
 
 onMounted(async() => {
     const result = await fetch('http://localhost:3000/movies');
+    console.log(result)
     const response = await result.json();
 
     movielist.value = response;

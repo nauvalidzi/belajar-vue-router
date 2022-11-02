@@ -6,10 +6,10 @@ import Movies from '../views/Movies.vue';
 import MovieDetails from '../views/MovieDetails.vue';
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/about', component: About },
-    { path: '/movies', component: Movies },
-    { path: '/movies/:id', component: MovieDetails}
+    { path: '/', component: Home, name: 'home' },
+    { path: '/about', component: About, name: 'about' },
+    { path: '/movies', component: Movies, name: 'movies.index' },
+    { path: '/movies/:id', component: MovieDetails, name: 'movies.show', props: true},
 ];
 
 const router = createRouter({

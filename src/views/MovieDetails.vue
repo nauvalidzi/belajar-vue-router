@@ -1,13 +1,20 @@
 <script setup>
 import { ref, onMounted} from 'vue'
-import { useRoute } from 'vue-router';
+// import { useRoute } from 'vue-router';
 
 const queryMovie = ref({})
 const isLoading = ref(true)
-const route = useRoute()
+// const route = useRoute()
+
+const props = defineProps({
+    id: {
+        type: String,
+        required: true
+    }
+})
 
 onMounted(async() => {
-    const result = await fetch(`http://localhost:3000/movies/${route.params.id}`);
+    const result = await fetch(`http://localhost:3000/movies/${parseInt(props.id)}`);
     const response = await result.json();
 
     queryMovie.value = response
@@ -36,10 +43,10 @@ onMounted(async() => {
     
                 <div class="mt-6 sm:-mx-2">
                     <div class="inline-flex w-full overflow-hidden rounded-lg shadow sm:w-auto sm:mx-2">
-                        <a href="#" class="inline.flex items-center justify-center w-full px-5 py-3 text-base font-medium">Watch Online</a>
+                        <a href="#" class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium bg-gray-800 text-white">Watch Online</a>
                     </div>
                     <div class="inline-flex w-full overflow-hidden rounded-lg shadow sm:w-auto sm:mx-2">
-                        <a href="#" class="inline.flex items-center justify-center w-full px-5 py-3 text-base font-medium">Download</a>
+                        <a href="#" class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium bg-indigo-700 text-white">Download</a>
                     </div>
                 </div>
             </div>
