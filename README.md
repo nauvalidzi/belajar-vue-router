@@ -23,4 +23,5 @@ npm run dev
 json-server --watch database/movies.json
 ```
 <br />
+
 **Enjoy** :coffee:
