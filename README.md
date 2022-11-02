@@ -1,7 +1,26 @@
 # Vue 3 + Vite + JSON Server
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Latihan VueJS + Vite dengan JSON Server sebagai database.
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+## Duplikat project
+```
+git clone https://github.com/nauvalidzi/belajar-vue-router.git
+```
+#### Buka direktori project
+```
+cd belajar-vue-router/
+```
+#### Install library node modules
+```
+npm install
+```
+#### Jalankan project
+```
+npm run dev
+```
+#### Jalankan JSON-Server
+```
+json-server --watch database/movies.json
+```
+<br />
+**Enjoy** :coffee:
