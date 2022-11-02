@@ -1,9 +1,10 @@
 <script setup>
 import { ref, onMounted} from 'vue'
-// import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const queryMovie = ref({})
 const isLoading = ref(true)
+const router = useRouter()
 // const route = useRoute()
 
 const props = defineProps({
@@ -15,6 +16,9 @@ const props = defineProps({
 
 onMounted(async() => {
     const result = await fetch(`http://localhost:3000/movies/${parseInt(props.id)}`);
+    if (result.status === 404) {
+        router.push({ name: 'error.notfound'})
+    }
     const response = await result.json();
 
     queryMovie.value = response
@@ -51,5 +55,6 @@ onMounted(async() => {
                 </div>
             </div>
         </div>
+        <button class="ml-5 px-5 py-3 rounded-lg bg-gray-300 outline-5" @click="$router.back">Go Back</button>
     </section>
 </template>
